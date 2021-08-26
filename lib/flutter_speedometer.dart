@@ -5,21 +5,21 @@ import 'package:flutter/material.dart';
 import 'src/painter.dart';
 
 class Speedometer extends StatefulWidget {
-  Speedometer(
-      {Key key,
-      this.size = 200,
-      this.minValue = 0,
-      this.maxValue = 100,
-      this.currentValue = 0,
-      this.warningValue = 80,
-      this.backgroundColor = Colors.black,
-      this.meterColor = Colors.lightGreenAccent,
-      this.warningColor = Colors.redAccent,
-      this.kimColor = Colors.white,
-      this.displayNumericStyle,
-      this.displayText = '',
-      this.displayTextStyle})
-      : super(key: key);
+  Speedometer({
+    Key? key,
+    this.size = 200,
+    this.minValue = 0,
+    this.maxValue = 100,
+    this.currentValue = 0,
+    this.warningValue = 80,
+    this.backgroundColor = Colors.black,
+    this.meterColor = Colors.lightGreenAccent,
+    this.warningColor = Colors.redAccent,
+    this.kimColor = Colors.white,
+    this.displayNumericStyle,
+    this.displayText = '',
+    this.displayTextStyle,
+  }) : super(key: key);
   final double size;
   final int minValue;
   final int maxValue;
@@ -29,9 +29,9 @@ class Speedometer extends StatefulWidget {
   final Color meterColor;
   final Color warningColor;
   final Color kimColor;
-  final TextStyle displayNumericStyle;
+  final TextStyle? displayNumericStyle;
   final String displayText;
-  final TextStyle displayTextStyle;
+  final TextStyle? displayTextStyle;
   @override
   _SpeedometerState createState() => _SpeedometerState();
 }
@@ -91,9 +91,10 @@ class _SpeedometerState extends State<Speedometer> {
                           color: widget.backgroundColor,
                           boxShadow: [
                             new BoxShadow(
-                                color: widget.kimColor,
-                                blurRadius: 8.0,
-                                spreadRadius: 4.0)
+                              color: widget.kimColor,
+                              blurRadius: 8.0,
+                              spreadRadius: 4.0,
+                            )
                           ],
                           shape: BoxShape.circle,
                         ),
@@ -102,16 +103,18 @@ class _SpeedometerState extends State<Speedometer> {
                     CustomPaint(
                       size: Size(_size, _size),
                       painter: ArcPainter(
-                          startAngle: 9,
-                          sweepAngle: 18,
-                          color: widget.warningColor),
+                        startAngle: 9,
+                        sweepAngle: 18,
+                        color: widget.warningColor,
+                      ),
                     ),
                     CustomPaint(
                       size: Size(_size, _size),
                       painter: ArcPainter(
-                          startAngle: 9,
-                          sweepAngle: _warningAngle,
-                          color: widget.meterColor),
+                        startAngle: 9,
+                        sweepAngle: _warningAngle,
+                        color: widget.meterColor,
+                      ),
                     ),
                   ]),
                 ),
@@ -136,9 +139,10 @@ class _SpeedometerState extends State<Speedometer> {
                       color: widget.kimColor,
                       boxShadow: [
                         new BoxShadow(
-                            color: widget.meterColor,
-                            blurRadius: 10.0,
-                            spreadRadius: 5.0)
+                          color: widget.meterColor,
+                          blurRadius: 10.0,
+                          spreadRadius: 5.0,
+                        ),
                       ],
                       shape: BoxShape.circle,
                     ),
