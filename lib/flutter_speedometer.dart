@@ -135,7 +135,7 @@ class _SpeedometerState extends State<Speedometer> {
                 Container(
                   alignment: AlignmentDirectional.bottomEnd,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.only(end: 8.0),
+                    padding: EdgeInsetsDirectional.only(end: 16.0),
                     child: Text(
                       '${widget.minValue}',
                       style: widget.displayTextStyle,
@@ -145,7 +145,7 @@ class _SpeedometerState extends State<Speedometer> {
                 Container(
                   alignment: AlignmentDirectional.bottomStart,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.only(start: 8.0),
+                    padding: EdgeInsetsDirectional.only(start: 12.0),
                     child: Text(
                       '${widget.maxValue}',
                       style: widget.displayTextStyle,
