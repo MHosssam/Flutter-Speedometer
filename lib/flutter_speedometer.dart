@@ -194,9 +194,9 @@ class _SpeedometerState extends State<Speedometer> {
                 Container(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, _size * 0.2),
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, _size * 0.3),
                     child: Text(
-                      '${widget.currentValue}  %',
+                      '${widget.currentValue}%',
                       style: widget.displayNumericStyle,
                     ),
                   ),
