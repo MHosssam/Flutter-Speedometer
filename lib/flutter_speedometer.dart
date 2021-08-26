@@ -200,7 +200,7 @@ class _SpeedometerState extends State<Speedometer> {
                 Container(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, _size * 0.1),
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, _size * 0.2),
                     child: Text(
                       widget.currentValue.toString(),
                       style: widget.displayNumericStyle,
