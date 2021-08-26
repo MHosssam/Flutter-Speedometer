@@ -17,7 +17,7 @@ class Speedometer extends StatefulWidget {
     this.warningColor = Colors.redAccent,
     this.kimColor = Colors.white,
     this.displayNumericStyle,
-    this.displayText = '',
+    this.displayWidget,
     this.displayTextStyle,
   }) : super(key: key);
   final double size;
@@ -30,7 +30,7 @@ class Speedometer extends StatefulWidget {
   final Color warningColor;
   final Color kimColor;
   final TextStyle? displayNumericStyle;
-  final String displayText;
+  final Widget? displayWidget;
   final TextStyle? displayTextStyle;
   @override
   _SpeedometerState createState() => _SpeedometerState();
@@ -135,7 +135,7 @@ class _SpeedometerState extends State<Speedometer> {
                 Container(
                   alignment: AlignmentDirectional.bottomEnd,
                   child: Padding(
-                    padding: EdgeInsetsDirectional.only(end: 16.0),
+                    padding: EdgeInsetsDirectional.only(end: 20.0),
                     child: Text(
                       '${widget.minValue}',
                       style: widget.displayTextStyle,
@@ -189,20 +189,14 @@ class _SpeedometerState extends State<Speedometer> {
 
                 Container(
                   alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    child: Text(
-                      widget.displayText,
-                      style: widget.displayTextStyle,
-                    ),
-                  ),
+                  child: widget.displayWidget ?? Container(),
                 ),
                 Container(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(0, 0, 0, _size * 0.2),
                     child: Text(
-                      widget.currentValue.toString(),
+                      '${widget.currentValue}  %',
                       style: widget.displayNumericStyle,
                     ),
                   ),
