@@ -1,6 +1,6 @@
 library flutter_speedometer;
 
-import 'dart:math' as math;
+// import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'src/painter.dart';
 
@@ -80,43 +80,46 @@ class _SpeedometerState extends State<Speedometer> {
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(_size * 0.075),
-                  child: Stack(children: <Widget>[
-                    Container(
-                      alignment: Alignment.center,
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: _size,
-                        height: _size,
-                        decoration: new BoxDecoration(
-                          color: widget.backgroundColor,
-                          boxShadow: [
-                            new BoxShadow(
-                              color: widget.kimColor,
-                              blurRadius: 8.0,
-                              spreadRadius: 4.0,
-                            )
-                          ],
-                          shape: BoxShape.circle,
+                  child: Stack(
+                    children: <Widget>[
+                      // Container(
+                      //   alignment: Alignment.center,
+                      //   child: Container(
+                      //     alignment: Alignment.center,
+                      //     width: _size,
+                      //     height: _size,
+                      //     decoration: new BoxDecoration(
+                      //       color: widget.backgroundColor,
+                      //       boxShadow: [
+                      //         new BoxShadow(
+                      //           color: widget.kimColor,
+                      //           blurRadius: 8.0,
+                      //           spreadRadius: 4.0,
+                      //         )
+                      //       ],
+                      //       shape: BoxShape.circle,
+                      //     ),
+                      //   ),
+                      // ),
+
+                      CustomPaint(
+                        size: Size(_size, _size),
+                        painter: ArcPainter(
+                          startAngle: 9,
+                          sweepAngle: 18,
+                          color: widget.warningColor,
                         ),
                       ),
-                    ),
-                    CustomPaint(
-                      size: Size(_size, _size),
-                      painter: ArcPainter(
-                        startAngle: 9,
-                        sweepAngle: 18,
-                        color: widget.warningColor,
+                      CustomPaint(
+                        size: Size(_size, _size),
+                        painter: ArcPainter(
+                          startAngle: 9,
+                          sweepAngle: _warningAngle,
+                          color: widget.meterColor,
+                        ),
                       ),
-                    ),
-                    CustomPaint(
-                      size: Size(_size, _size),
-                      painter: ArcPainter(
-                        startAngle: 9,
-                        sweepAngle: _warningAngle,
-                        color: widget.meterColor,
-                      ),
-                    ),
-                  ]),
+                    ],
+                  ),
                 ),
                 Container(
                   alignment: Alignment.bottomCenter,
@@ -130,38 +133,60 @@ class _SpeedometerState extends State<Speedometer> {
                   ),
                 ),
                 Container(
-                  alignment: Alignment.center,
-                  child: Container(
-                    width: _size * 0.1,
-                    height: _size * 0.1,
-                    alignment: Alignment.center,
-                    decoration: new BoxDecoration(
-                      color: widget.kimColor,
-                      boxShadow: [
-                        new BoxShadow(
-                          color: widget.meterColor,
-                          blurRadius: 10.0,
-                          spreadRadius: 5.0,
-                        ),
-                      ],
-                      shape: BoxShape.circle,
+                  alignment: AlignmentDirectional.bottomStart,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: Text(
+                      '${widget.minValue}',
+                      style: widget.displayTextStyle,
                     ),
                   ),
                 ),
                 Container(
-                  alignment: Alignment.center,
-                  child: Transform.rotate(
-                    angle: math.pi / 12 * _kimAngle,
-                    child: ClipPath(
-                      clipper: KimClipper(),
-                      child: Container(
-                        width: _size * 0.9,
-                        height: _size * 0.9,
-                        color: widget.kimColor,
-                      ),
+                  alignment: AlignmentDirectional.bottomEnd,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: Text(
+                      '${widget.maxValue}',
+                      style: widget.displayTextStyle,
                     ),
                   ),
                 ),
+                // Container(
+                //   alignment: Alignment.center,
+                //   child: Container(
+                //     width: _size * 0.1,
+                //     height: _size * 0.1,
+                //     alignment: Alignment.center,
+                //     decoration: new BoxDecoration(
+                //       color: widget.kimColor,
+                //       boxShadow: [
+                //         new BoxShadow(
+                //           color: widget.meterColor,
+                //           blurRadius: 10.0,
+                //           spreadRadius: 5.0,
+                //         ),
+                //       ],
+                //       shape: BoxShape.circle,
+                //     ),
+                //   ),
+                // ),
+
+                // Container(
+                //   alignment: Alignment.center,
+                //   child: Transform.rotate(
+                //     angle: math.pi / 12 * _kimAngle,
+                //     child: ClipPath(
+                //       clipper: KimClipper(),
+                //       child: Container(
+                //         width: _size * 0.9,
+                //         height: _size * 0.9,
+                //         color: widget.kimColor,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+
                 Container(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
