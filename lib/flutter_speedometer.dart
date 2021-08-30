@@ -206,6 +206,7 @@ class _SpeedometerState extends State<Speedometer> {
                   child: widget.displayWidget ?? Container(),
                 ),
                 Container(
+                  alignment: Alignment.center,
                   child: Text(
                     '${widget.currentValue}%',
                     style: widget.displayNumericStyle,
