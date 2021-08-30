@@ -202,7 +202,7 @@ class _SpeedometerState extends State<Speedometer> {
 
                 Container(
                   alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 10),
+                  margin: EdgeInsets.only(top: 25),
                   child: widget.displayWidget ?? Container(),
                 ),
                 Container(
