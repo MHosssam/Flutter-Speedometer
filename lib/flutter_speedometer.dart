@@ -139,6 +139,7 @@ class _SpeedometerState extends State<Speedometer> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.only(end: 20.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         widget.minWidget!,
                         Text(
@@ -201,12 +202,13 @@ class _SpeedometerState extends State<Speedometer> {
 
                 Container(
                   alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: _size * 0.4),
                   child: widget.displayWidget ?? Container(),
                 ),
                 Container(
                   alignment: Alignment.topCenter,
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, _size * 0.3),
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                     child: Text(
                       '${widget.currentValue}%',
                       style: widget.displayNumericStyle,
