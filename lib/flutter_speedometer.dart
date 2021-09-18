@@ -11,6 +11,7 @@ class Speedometer extends StatefulWidget {
     this.minValue = 0,
     this.maxValue = 100,
     this.currentValue = 0,
+    this.currentDisplayValue = 0,
     this.warningValue = 0,
     this.backgroundColor = Colors.black,
     this.meterColor = Colors.lightGreenAccent,
@@ -28,6 +29,8 @@ class Speedometer extends StatefulWidget {
   final num maxValue;
   final num currentValue;
   final num warningValue;
+  final num? currentDisplayValue;
+
   final Color backgroundColor;
   final Color meterColor;
   final Color warningColor;
@@ -205,17 +208,18 @@ class _SpeedometerState extends State<Speedometer> {
                 //     ),
                 //   ),
                 // ),
+                if (widget.displayWidget != null)
+                  Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.only(top: 25),
+                    child: widget.displayWidget!,
+                  ),
 
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 25),
-                  child: widget.displayWidget ?? Container(),
-                ),
                 Container(
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(bottom: 25),
                   child: Text(
-                    '${widget.currentValue}%',
+                    '${widget.currentDisplayValue ?? widget.currentValue}%',
                     style: widget.displayNumericStyle,
                   ),
                 ),
