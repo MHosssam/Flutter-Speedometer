@@ -24,10 +24,10 @@ class Speedometer extends StatefulWidget {
   }) : super(key: key);
 
   final double size;
-  final int minValue;
-  final int maxValue;
-  final int currentValue;
-  final int warningValue;
+  final num minValue;
+  final num maxValue;
+  final num currentValue;
+  final num warningValue;
   final Color backgroundColor;
   final Color meterColor;
   final Color warningColor;
@@ -44,10 +44,10 @@ class _SpeedometerState extends State<Speedometer> {
   @override
   Widget build(BuildContext context) {
     double _size = widget.size;
-    int _minValue = widget.minValue;
-    int _maxValue = widget.maxValue;
-    int _currentValue = widget.currentValue;
-    int _warningValue = widget.warningValue;
+    num _minValue = widget.minValue;
+    num _maxValue = widget.maxValue;
+    num _currentValue = widget.currentValue;
+    num _warningValue = widget.warningValue;
     double startAngle = 3.0;
     double endAngle = 21.0;
 

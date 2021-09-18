@@ -5,7 +5,7 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         body: Center(
           child: Directionality(
             textDirection: TextDirection.ltr,
@@ -21,21 +21,21 @@ void main() {
                     maxValue: 50,
                     currentValue: 30,
                     warningValue: 40,
-                    backgroundColor: Colors.black,
+                    backgroundColor: Colors.white,
                     meterColor: Colors.lightBlueAccent,
                     warningColor: Colors.orange,
                     kimColor: Colors.purpleAccent,
                     displayNumericStyle: TextStyle(
                       fontFamily: 'Digital-Display',
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 18,
                     ),
                     displayWidget: Text(
                       '°C',
-                      style: TextStyle(color: Colors.white, fontSize: 15),
+                      style: TextStyle(color: Colors.black, fontSize: 15),
                     ),
                     displayTextStyle:
-                        TextStyle(color: Colors.white, fontSize: 8),
+                        TextStyle(color: Colors.black, fontSize: 8),
                   ),
                   Spacer(),
                   Speedometer(
