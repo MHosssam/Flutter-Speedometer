@@ -22,6 +22,7 @@ class Speedometer extends StatefulWidget {
     this.minWidget,
     this.displayTextStyle,
   }) : super(key: key);
+
   final double size;
   final int minValue;
   final int maxValue;
@@ -34,6 +35,7 @@ class Speedometer extends StatefulWidget {
   final TextStyle? displayNumericStyle;
   final Widget? displayWidget, maxWidget, minWidget;
   final TextStyle? displayTextStyle;
+
   @override
   _SpeedometerState createState() => _SpeedometerState();
 }
@@ -141,11 +143,13 @@ class _SpeedometerState extends State<Speedometer> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        widget.minWidget!,
-                        Text(
-                          '${widget.minValue}',
-                          style: widget.displayTextStyle,
-                        ),
+                        if (widget.minWidget != null)
+                          widget.minWidget!
+                        else
+                          Text(
+                            '${widget.minValue}',
+                            style: widget.displayTextStyle,
+                          ),
                       ],
                     ),
                   ),
@@ -156,11 +160,13 @@ class _SpeedometerState extends State<Speedometer> {
                     padding: EdgeInsetsDirectional.only(start: 12.0),
                     child: Row(
                       children: [
-                        Text(
-                          '${widget.maxValue}',
-                          style: widget.displayTextStyle,
-                        ),
-                        widget.maxWidget!,
+                        if (widget.maxWidget != null)
+                          widget.maxWidget!
+                        else
+                          Text(
+                            '${widget.maxValue}',
+                            style: widget.displayTextStyle,
+                          ),
                       ],
                     ),
                   ),
