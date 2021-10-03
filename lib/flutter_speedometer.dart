@@ -11,6 +11,7 @@ class Speedometer extends StatefulWidget {
     this.minValue = 0,
     this.maxValue = 100,
     this.currentValue = 0,
+    this.currentDisplayValue = 0,
     this.warningValue = 0,
     this.backgroundColor = Colors.black,
     this.meterColor = Colors.lightGreenAccent,
@@ -22,11 +23,14 @@ class Speedometer extends StatefulWidget {
     this.minWidget,
     this.displayTextStyle,
   }) : super(key: key);
+
   final double size;
-  final int minValue;
-  final int maxValue;
-  final int currentValue;
-  final int warningValue;
+  final num minValue;
+  final num maxValue;
+  final num currentValue;
+  final num warningValue;
+  final num? currentDisplayValue;
+
   final Color backgroundColor;
   final Color meterColor;
   final Color warningColor;
@@ -34,6 +38,7 @@ class Speedometer extends StatefulWidget {
   final TextStyle? displayNumericStyle;
   final Widget? displayWidget, maxWidget, minWidget;
   final TextStyle? displayTextStyle;
+
   @override
   _SpeedometerState createState() => _SpeedometerState();
 }
@@ -42,10 +47,10 @@ class _SpeedometerState extends State<Speedometer> {
   @override
   Widget build(BuildContext context) {
     double _size = widget.size;
-    int _minValue = widget.minValue;
-    int _maxValue = widget.maxValue;
-    int _currentValue = widget.currentValue;
-    int _warningValue = widget.warningValue;
+    num _minValue = widget.minValue;
+    num _maxValue = widget.maxValue;
+    num _currentValue = widget.currentValue;
+    num _warningValue = widget.warningValue;
     double startAngle = 3.0;
     double endAngle = 21.0;
 
@@ -141,11 +146,13 @@ class _SpeedometerState extends State<Speedometer> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        widget.minWidget!,
-                        Text(
-                          '${widget.minValue}',
-                          style: widget.displayTextStyle,
-                        ),
+                        if (widget.minWidget != null)
+                          widget.minWidget!
+                        else
+                          Text(
+                            '${widget.minValue}',
+                            style: widget.displayTextStyle,
+                          ),
                       ],
                     ),
                   ),
@@ -156,11 +163,13 @@ class _SpeedometerState extends State<Speedometer> {
                     padding: EdgeInsetsDirectional.only(start: 12.0),
                     child: Row(
                       children: [
-                        Text(
-                          '${widget.maxValue}',
-                          style: widget.displayTextStyle,
-                        ),
-                        widget.maxWidget!,
+                        if (widget.maxWidget != null)
+                          widget.maxWidget!
+                        else
+                          Text(
+                            '${widget.maxValue}',
+                            style: widget.displayTextStyle,
+                          ),
                       ],
                     ),
                   ),
@@ -199,17 +208,18 @@ class _SpeedometerState extends State<Speedometer> {
                 //     ),
                 //   ),
                 // ),
+                if (widget.displayWidget != null)
+                  Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.only(top: 25),
+                    child: widget.displayWidget!,
+                  ),
 
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 25),
-                  child: widget.displayWidget ?? Container(),
-                ),
                 Container(
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(bottom: 25),
                   child: Text(
-                    '${widget.currentValue}%',
+                    '${widget.currentDisplayValue ?? widget.currentValue}%',
                     style: widget.displayNumericStyle,
                   ),
                 ),
